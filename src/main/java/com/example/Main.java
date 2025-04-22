@@ -10,6 +10,7 @@ public class Main {
         System.out.println(getGreeting());
     }
 
+    
     public static String getGreeting() {
         return "Hello, World!";
     }
