@@ -21,9 +21,13 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {
-                powershell 'java -jar build/libs/hello-world-java-V1.jar'
-            }
+            script {
+                    if (fileExists('build/libs/hello-world-java-V1.jar')) {
+                        bat 'java -jar build/libs/hello-world-java-V1.jar'
+                    } else {
+                        error 'JAR file not found!'
+                    }
+                }
         }
     }
 
